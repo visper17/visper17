@@ -241,15 +241,21 @@
         function showResult() {
             const resultDiv = document.getElementById('result');
             
+            // Remove and re-add the animation class for consistent animation
+            resultDiv.classList.remove('show');
+            
             if (selectedDay && selectedEar) {
                 const meaning = meanings[selectedDay][selectedEar];
                 resultDiv.textContent = meaning;
-                resultDiv.classList.add('show');
             } else if (selectedDay && !selectedEar) {
                 resultDiv.textContent = 'Теперь выберите, какое ухо горит';
             } else if (!selectedDay && selectedEar) {
                 resultDiv.textContent = 'Выберите день недели';
             }
+            
+            // Trigger reflow to ensure animation plays
+            void resultDiv.offsetWidth;
+            resultDiv.classList.add('show');
         }
 
         // Auto-select today
