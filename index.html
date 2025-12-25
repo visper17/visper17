@@ -245,7 +245,7 @@
             resultDiv.classList.remove('show');
             
             if (selectedDay && selectedEar) {
-                const meaning = meanings[selectedDay][selectedEar];
+                const meaning = meanings[selectedDay]?.[selectedEar] || 'Значение не найдено';
                 resultDiv.textContent = meaning;
             } else if (selectedDay && !selectedEar) {
                 resultDiv.textContent = 'Теперь выберите, какое ухо горит';
@@ -254,7 +254,7 @@
             }
             
             // Trigger reflow to ensure animation plays
-            void resultDiv.offsetWidth;
+            const _ = resultDiv.offsetWidth;
             resultDiv.classList.add('show');
         }
 
